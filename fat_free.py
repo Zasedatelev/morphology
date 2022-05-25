@@ -1,9 +1,10 @@
 import math
 
-print("[INFO] Определение обезжиреной массы тела!")
-
 
 def fat_free_body_weight():
+
+    print("[INFO] Определение обезжиреной массы тела!")
+
     const = 18.1
     L = float(input('Введите длинну тела: '))
     P = float(input('Введите массу тела: '))
@@ -25,4 +26,4 @@ def fat_free_body_weight():
                  f'что составляет {percentage_of_body_weight}% от вашей массы тела')
 
 
-fat_free_body_weight()
+

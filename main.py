@@ -34,11 +34,12 @@ if __name__ == "__main__":
     login = input('логин:\n==>')
     password = input('пароль:\n==>')
 
-    login_on(login, password)
-    if login_on:
-        menu()
-    else:
-        register_user(login, password)
-        if register_user:
-            menu()
+    # login_on(login, password)
+    register_user(login, password)
+    # if login_on:
+    #     menu()
+    # else:
+    #     register_user(login, password)
+    #     if register_user:
+    #         menu()
 

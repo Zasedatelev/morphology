@@ -14,9 +14,9 @@ def login_on(login, password):
     for user in users:
         if login in user['client_name']:
             if password in user['client_password']:
-                print('Пользователь существует')
-
-        return True
+                return True
+        else:
+            print(f'Пользователь {login} не найден( Вам нужно зарегистрироваться для доступа к приложению.')
 
 
 def register_user(login, password):
@@ -24,13 +24,11 @@ def register_user(login, password):
     with engine.connect() as connection:
         users = connection.execute(query)
     for user in users:
-        if login in user['client_name']:
-            print('[INFO] Этот логин уже занят!( Придумайте другой...')
+        if login == user['client_name']:
+            return False
 
-    else:
-        user = Clients(client_name=login, client_password=password)
-        session.add(user)
-        session.commit()
-        print('[INFO] Пользователь добавлен!')
-
-
+        else:
+            user = Clients(client_name=login, client_password=password)
+            session.add(user)
+            session.commit()
+            return True

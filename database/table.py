@@ -1,6 +1,6 @@
 import sqlalchemy as sq
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.orm import sessionmaker
 from database.db import engine
 
 
@@ -19,5 +19,4 @@ class Clients(Base):
 if __name__ == "__main__":
     session = Session()
     Base.metadata.create_all(engine)
-
     print('finish')

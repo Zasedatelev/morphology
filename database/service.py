@@ -1,4 +1,3 @@
-from sqlalchemy import select, insert, delete, update
 from database.table import Clients
 from database.db import engine
 from sqlalchemy.orm import sessionmaker
@@ -8,27 +7,25 @@ session = Session()
 
 
 def login_on(login, password):
-    query = select(Clients)
-    with engine.connect() as connection:
-        users = connection.execute(query)
-    for user in users:
-        if login in user['client_name']:
-            if password in user['client_password']:
-                return True
-        else:
-            print(f'Пользователь {login} не найден( Вам нужно зарегистрироваться для доступа к приложению.')
+    current_user_name = session.query(Clients).filter_by(client_name=login, client_password=password).first()
+
+    if current_user_name is not None:
+        return True
+    else:
+        print(f'Пользователь {login} не найден(\n')
+        return False
 
 
 def register_user(login, password):
-    query = select(Clients)
-    with engine.connect() as connection:
-        users = connection.execute(query)
-    for user in users:
-        if login == user['client_name']:
-            return False
+    current_user_name = session.query(Clients).filter_by(client_name=login).first()
 
-        else:
-            user = Clients(client_name=login, client_password=password)
-            session.add(user)
-            session.commit()
-            return True
+    if current_user_name is not None:
+        print(f'Пользователь {login} уже существует( Придумайте новый\n')
+        return False
+
+    else:
+        user = Clients(client_name=login, client_password=password)
+        session.add(user)
+        session.commit()
+        print(f'Пользователь {login} зарегистрирован!\n')
+        return True

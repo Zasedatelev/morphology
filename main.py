@@ -37,25 +37,19 @@ if __name__ == "__main__":
     print(preview)
     print('Войти в приложение > "1"\n'
           'Зарегистрироваться > "2"\n')
-
     open_app = int(input('==> '))
 
     if open_app == 1:
         login = input('логин:\n==>')
         password = input('пароль:\n==>')
-        login_on(login, password)
-        if login_on:
+
+        if login_on(login, password):
             print(f'Здравствуйте {login}. Доступ разрешен.\n')
             menu()
 
     if open_app == 2:
         login = input('логин:\n==>')
         password = input('пароль:\n==>')
-        register_user(login, password)
 
-        if register_user:
-            print(f'Пользователь {login} зарегистрирован!')
+        if register_user(login, password):
             menu()
-        else:
-            register_user(login, password)
-

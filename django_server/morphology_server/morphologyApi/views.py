@@ -1,10 +1,19 @@
 from rest_framework.viewsets import ModelViewSet
-from .models import User
-from .serializers import Userserializer
+from rest_framework import generics, permissions
+from .models import UserData, Users
+from .serializers import UserDataSerializer, Userserializer
+from.permissons import IsOwnerOrReadOnly
 
 
-class UserApiViews(ModelViewSet):
-    queryset = User.objects.all()
+class UserListApiViews(ModelViewSet):
+    queryset = Users.objects.all()
     serializer_class = Userserializer
+
+
+class UserDataApiViews(ModelViewSet):
+    queryset = UserData.objects.all()
+    serializer_class = UserDataSerializer
+
+
 
 

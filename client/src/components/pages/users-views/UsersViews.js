@@ -1,18 +1,23 @@
-import ApiService from "../../services/UserServices";
 import React from "react";
 import axios from "axios";
 import './users-style.css'
+import { Navigate} from 'react-router-dom';
 
-function UsersViews () {
+function UsersViews (props) {
     const [users, setUsers] = React.useState([])
 
-   const userServices = new ApiService();
+
    
    React.useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/v1/users/').then(({ data }) => {
+    axios.get('http://127.0.0.1:8000/api/v1/users/')
+    .then(({ data }) => {
       setUsers(data);
-      
-    });
+    })
+    .catch((err) => {
+        if(err.response.status === 403) {
+            <Navigate to='/login' />;
+        }
+    })
   }, []);
 
 

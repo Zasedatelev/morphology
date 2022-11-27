@@ -12,7 +12,7 @@ class UserDataSerializer(serializers.ModelSerializer):
 
 
 class Userserializer(serializers.ModelSerializer):
-    # user = serializers.HiddenField(default=serializers.CurrentUserDefault)
+    
     data = UserDataSerializer(read_only=True, many=True)
     class Meta:
         model = Users

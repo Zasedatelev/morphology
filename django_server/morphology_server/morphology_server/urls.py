@@ -12,6 +12,6 @@ router.register('users', UserListApiViews)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/auth/', include('rest_framework.urls')),
+    path('api/v1/auth/', include('dj_rest_auth.urls')),
     path('api/v1/', include(router.urls))
 ]

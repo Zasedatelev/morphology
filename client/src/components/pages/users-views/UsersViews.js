@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
 import './users-style.css'
-import { Navigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function UsersViews (props) {
     const [users, setUsers] = React.useState([])
-
+    const navigate = useNavigate();
 
    
    React.useEffect(() => {
@@ -15,7 +15,7 @@ function UsersViews (props) {
     })
     .catch((err) => {
         if(err.response.status === 403) {
-            <Navigate to='/login' />;
+            window.location.href = '/login';
         }
     })
   }, []);

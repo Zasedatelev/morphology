@@ -15,7 +15,7 @@ function UsersViews (props) {
     })
     .catch((err) => {
         if(err.response.status === 403) {
-            window.location.href = '/login';
+            window.location.href = '/regist';
         }
     })
   }, []);

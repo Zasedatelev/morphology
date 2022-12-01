@@ -1,0 +1,8 @@
+# TODO: add versions
+dj_rest_auth
+django
+django-allauth
+django-cors-headers
+djangorestframework
+djoser
+psycopg2

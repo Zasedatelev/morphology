@@ -3,23 +3,25 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
+import keyStore from "../keyStore";
+
 function Regist () {
     const [name, setName] = React.useState('');
     const [password, setPassword] = React.useState('');
     const navigate = useNavigate();
 
-   const postRegister = () => {  
-    axios({
-      method: 'post',
-      url: 'http://127.0.0.1:8000/api/v1/dj-rest-auth/login/',
-      data: {
-        username: name,
-        password: password
-      }
-    }).then((response) => {
-        navigate("/", {headers: { Authorization: `Bearer ${response.key}` }})
-    })
-    ;
+    const postRegister = () => {
+        axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/api/v1/dj-rest-auth/login/',
+          data: {
+            username: name,
+            password: password
+          },
+        }).then((resp) => {
+            keyStore.key = resp.data.key;
+            navigate("/");
+        });
     };
     
         return (
@@ -37,7 +39,7 @@ function Regist () {
                         <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                         <label className="form-check-label" htmlFor="exampleCheck1">Проверить меня</label>
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={postRegister}>Отправить</button>
+                    <button type="button" className="btn btn-primary" onClick={postRegister}>Отправить</button>
                 </form>
             </div>
     )   

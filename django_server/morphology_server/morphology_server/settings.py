@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
 ]
 
-ACCOUNT_LOGOUT_ON_GET = True
+# TODO: POST to /api/v1/dj-rest-auth/logout/ works for me
+# ACCOUNT_LOGOUT_ON_GET = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    
 ]
 
 ROOT_URLCONF = 'morphology_server.urls'
@@ -145,4 +145,11 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
 ]
 
-RESET_AUTH_TOKEN_MODEL = None 
+RESET_AUTH_TOKEN_MODEL = None
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import './regist_style.css'
+
 function regist_panel () {
     return (
         <div className='regist'>

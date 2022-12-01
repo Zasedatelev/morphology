@@ -3,7 +3,7 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-function Regist () {
+function Login () {
     const [name, setName] = React.useState('');
     const [password, setPassword] = React.useState('');
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ function Regist () {
         password: password
       }
     }).then((response) => {
-        navigate("/", {headers: { Authorization: `Bearer ${response.key}` }})
+        console.log(response.json())// navigate("/", {headers: { Authorization: `Bearer ${response.data.key}` }})
     })
     ;
     };
@@ -43,4 +43,4 @@ function Regist () {
     )   
 }
 
-export default Regist;
+export default Login;

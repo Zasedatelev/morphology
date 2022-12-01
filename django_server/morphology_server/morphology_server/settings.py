@@ -43,13 +43,19 @@ INSTALLED_APPS = [
     'djoser',
     'dj_rest_auth',
     'rest_framework.authtoken',
+    'dj_rest_auth.registration',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'dj_rest_auth.registration',
 ]
 
 ACCOUNT_LOGOUT_ON_GET = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

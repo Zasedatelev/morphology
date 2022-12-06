@@ -18,8 +18,8 @@ function UsersViews (props) {
       setUsers(data);
     })
     .catch((err) => {
-        if(err.response.status === 403) {
-            window.location.href = '/regist';
+        if(err.response.status === 403||err.response.status === 401) {
+            window.location.href = '/guest_panel';
         }
     })
   }, []);

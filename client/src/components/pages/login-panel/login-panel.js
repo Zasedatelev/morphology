@@ -22,7 +22,7 @@ function Login () {
           },
         }).then((resp) => {
             keyStore.key = resp.data.key;
-            navigate("/");
+            navigate("/profile");
         });
 
     };

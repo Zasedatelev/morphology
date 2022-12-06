@@ -3,11 +3,11 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
-from morphologyApi.views import UserDataApiViews, UserListApiViews
+from morphologyApi.views import UserDataApiViews
 
 router = SimpleRouter()
 router.register('data', UserDataApiViews)
-router.register('users', UserListApiViews)
+
 
 
 urlpatterns = [

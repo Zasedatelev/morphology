@@ -8,12 +8,4 @@ class UserDataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserData
-        fields = '__all__'
-
-
-class Userserializer(serializers.ModelSerializer):
-    
-    data = UserDataSerializer(read_only=True, many=True)
-    class Meta:
-        model = Users
-        fields = '__all__'
+        exclude = ['created_at']

@@ -17,12 +17,10 @@ function Registration() {
             username: name,
             email: email,
             password1: password1,
-            password1: password1,
+            password2: password2,
           },
-        }).then(() => {
-            navigate("/login");
         });
-
+      navigate('/login');
     };
 
   return (
@@ -31,24 +29,24 @@ function Registration() {
                 <form className="form-control">
                     <div className="mb-3">
                         <label htmlFor="exampleInputName" className="form-label">Имя</label>
-                        <input type="text" className="form-control" id="exampleInputName"  />
+                        <input type="text" className="form-control" id="exampleInputName" onChange={e => setName(e.target.value) } />
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputEmail1" className="form-label">Адрес электронной почты</label>
+                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={e => setEmail(e.target.value) }/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label">Пароль 1</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" autoComplete="on" />
-                        <div id="emailHelp" class="form-text">Введите пароль</div>
+                        <input type="password" className="form-control" id="exampleInputPassword1" autoComplete="on" onChange={e => setPassword1(e.target.value) }/>
+                        <div className="form-text">Введите пароль</div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputPassword2" className="form-label">Пароль 2</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" autoComplete="on" />
-                        <div id="emailHelp" class="form-text">Пароли должны совпадать</div>
+                        <input type="password" className="form-control" id="exampleInputPassword2" autoComplete="on" onChange={e => setPassword2(e.target.value) }/>
+                        <div className="form-text">Пароли должны совпадать</div>
                     </div>
                     
-                    <button type="button" className="btn btn-primary" >Отправить</button>
+                    <button type="button" className="btn btn-primary" onClick={postRegister}>Отправить</button>
                 </form>
             </div>
     </div>

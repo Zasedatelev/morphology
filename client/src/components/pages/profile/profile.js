@@ -1,6 +1,6 @@
 import * as React from 'react';
 import axios from "axios";
-
+import keyStore from '../keyStore';
 
 function Profile() {
 
@@ -8,10 +8,16 @@ function Profile() {
 
   React.useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/v1/data/', {
+      headers: { 'Authorization': `Token ${keyStore.key}` }
     })
     .then(({ data }) => {
       setUserDate(data);
     })
+    .catch((err) => {
+      if(err.response.status === 403||err.response.status === 401) {
+          window.location.href = '/guest_panel';
+      }
+  })
   }, []);
 
   return (

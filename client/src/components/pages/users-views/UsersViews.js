@@ -19,7 +19,7 @@ function UsersViews (props) {
     })
     .catch((err) => {
         if(err.response.status === 403||err.response.status === 401) {
-            window.location.href = '/guest_panel';
+            window.location.href = '/';
         }
     })
   }, []);

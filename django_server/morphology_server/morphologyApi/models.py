@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class UserData(models.Model):
     id = models.AutoField(primary_key=True)
@@ -15,3 +16,5 @@ class UserData(models.Model):
     shin_circumference_minimal = models.IntegerField(verbose_name='Обхват голени минимальный(мм)')
     forearm_circumference_minimal = models.IntegerField(verbose_name='Обхват предплечья минимальный(мм)')
     created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    

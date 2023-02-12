@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/https//:Oleg-OMON.github.io/morphology/client/static/css/main.70e33569.css",
+    "main.js": "/https//:Oleg-OMON.github.io/morphology/client/static/js/main.2cbf7b4b.js",
+    "index.html": "/https//:Oleg-OMON.github.io/morphology/client/index.html",
+    "main.70e33569.css.map": "/https//:Oleg-OMON.github.io/morphology/client/static/css/main.70e33569.css.map",
+    "main.2cbf7b4b.js.map": "/https//:Oleg-OMON.github.io/morphology/client/static/js/main.2cbf7b4b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.70e33569.css",
+    "static/js/main.2cbf7b4b.js"
+  ]
+}
